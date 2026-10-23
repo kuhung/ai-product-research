@@ -7,7 +7,7 @@
 - 本仓库公开。收到的文件、对话、草稿、抓取结果和临时数据一律放本地 `private/`，不复制到提交说明、Issue、PR 或 Actions 输出。
 - 公开目录只有 `products/`、`lists/`、`articles/`，加上 `templates/`、`scripts/` 和根目录说明文件。不上传第三方原始文件（xlsx、pdf、整页截图等），引用链接和必要摘录即可。
 - 提交前运行 `python3 scripts/check.py`，并阅读 `git diff --cached`。不得用 `git add -f` 绕过忽略规则。
-- 使用任务分支和 PR，不直接推送 main；未经用户确认不推送新收到的资料。
+- 单人项目直接在 main 操作并推送；未经用户确认不推送新收到的资料。
 
 ## 证据规则
 
