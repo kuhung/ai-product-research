@@ -1,4 +1,4 @@
 #!/bin/sh
 set -eu
 cd "$(git rev-parse --show-toplevel)"
-python3 scripts/check_public_files.py
+python3 scripts/check.py

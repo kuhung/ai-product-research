@@ -3,32 +3,22 @@
 !/.gitignore
 !/README.md
 !/LICENSE
-!/CONTRIBUTING.md
 !/AGENTS.md
 !/.github/
 !/.githooks/
-!/research/
 !/products/
+!/lists/
+!/articles/
 !/templates/
 !/scripts/
 
-# 即使位于公开目录，也不收录以下文件。
+# 任何位置都不收录。
 **/private/
-**/work/
-**/outputs/
-**/scratch/
-**/drafts/
-**/discussions/
-**/inbox/
 **/.env
 **/.env.*
 **/*.pem
 **/*.key
-**/credentials.json
-**/secrets.json
 **/.DS_Store
 **/__pycache__/
-**/*.pyc
-**/.ipynb_checkpoints/
 **/.venv/
 **/node_modules/
