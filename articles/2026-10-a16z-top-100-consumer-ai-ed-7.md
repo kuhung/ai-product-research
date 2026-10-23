@@ -1,6 +1,6 @@
 ---
-title: a16z "Top 100 Consumer AI Apps" 第 7 期报告解读（2026 年 10 月）
-date: 2026-10-06
+title: a16z Top 100 消费级 AI 报告（第 7 期全文翻译与产品拆解预告）
+date: 2026-10-23
 status: draft
 products:
   - chatgpt
@@ -20,129 +20,199 @@ lists:
   - a16z-top-100-consumer-ai-2026-10
 ---
 
-# a16z "Top 100 Consumer AI Apps" 第 7 期报告解读（2026 年 10 月）
+# a16z Top 100 消费级 AI 报告（第 7 期全文翻译与产品拆解预告）
 
-> 本文为 a16z 第 7 期榜单报告的事实梳理与解读。本期官方报告由 a16z 合伙人 Olivia Moore 撰写，发布于 2026-10-05（[来源链接](https://a16z.com/100-gen-ai-apps-7/)），数据口径为 2026 年 8 月（Similarweb / Sensor Tower）及 YipitData 美国消费者 panel 信用卡与电子收据支出数据。完整排名表见 [榜单快照](../lists/a16z-top-100-consumer-ai-2026-10.md)。
+## 重点数据概览
 
-## 摘要
+a16z 发布的第 7 期消费级 AI 报告（[The Top 100 Gen AI Consumer Apps — 7th Edition](https://a16z.com/100-gen-ai-apps-7/)，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
 
-- **方法论首次变化**：前六期仅统计流量（Similarweb 全球月独立访问量 + Sensor Tower 移动端 MAU），第 7 期首次加入 **YipitData 美国消费者信用卡支出榜（Spend 50）**。a16z 指出“仅看流量越来越掩盖消费 AI 的真实趋势”，传统流量视角看不见桌面客户端、开发者工具、自动化 API 服务以及嵌入即时通讯生态的付费 Agent。
-- **核心发现：重度付费经济（Power-user economy）**：仅 4.5% 的美国消费者为 [ChatGPT](../products/chatgpt.md)、[Gemini](../products/gemini.md)、[Claude](../products/claude.md) 付费；在付费人群中，前 1% 的重度付费者（Top 1% Power Spenders）月均消费达 **$903**（18 个月内增长 80%），而付费者中位数仅为 $25/月；前 1% 付费者贡献了 19.5% 的总支出（超过后 50% 付费者合计贡献的 16.6%）；仅 13% 的付费者会购买第二个 AI 工具。
-- **[ChatGPT](../products/chatgpt.md) 仍是第一**：Web 访问量约为 [Gemini](../products/gemini.md) 的 2 倍、[Claude](../products/claude.md) 的 6 倍；移动端 MAU 超过 10 亿（约为 Gemini 的 2.5 倍、Claude 的 14 倍）；美国个人付费订阅数约为 Gemini 或 Claude 各自的 3 倍。ChatGPT 是本期唯一同时在 Web 榜、Mobile 榜、消费支出榜位居第 1 的产品。
-- **[Claude](../products/claude.md) 成为明确的 #3**：Web 流量超过 [DeepSeek](../products/deepseek.md) 与 [Perplexity](../products/perplexity.md)（月访问量近 10 亿）；2026 年内一度在美国家庭/个人付费订阅数上超过 Gemini；其订阅用户中有 7.3% 选用 $100+/月 Max 档（对比 ChatGPT 1.1%、Google 1.3%）。但在 7-8 月夏季出现日均会话下降、新增放缓与流失上升。
-- **榜单固化**：本期仅 11 个新产品首次上榜，为七期以来最少；支出榜 Top 50 中有 29 家公司完全不在 Web 或 Mobile 流量榜上；仅 7 家公司同时进入三榜。
-- **中国及华人背景产品表现**：官方正文确认 Claude 在 Web 流量上已超过 DeepSeek；[Kling AI](../products/kling-ai.md)（快手可灵）围绕专有视频模型进入消费支出榜（第 26 名）；由中国团队创立、2025 年中将总部迁至新加坡的 [Manus](../products/manus.md)（蝴蝶效应）被点名为前 1% 付费者超配的自主 Agent 工具（支出榜第 19 名）。
-- **核心商业判断**：市场焦点已从“谁在赢”转向“每家公司如何执行自己的机会”（Claude for work，Gemini for consumers，ChatGPT for both）；个人自主助手（Agent）开启下一个产品周期；订阅制触及大众市场天花板，正在催生广告变现（ChatGPT 广告年化已达 $10 亿）与交易抽成。
-- **对比第 6 期（2026-03）**：方法论从单一流量排名变为“流量 + 真实支出”；叙事重心从“默认入口与地理分化”转为“谁在真正付费、Agent 大众化以及既有软件（SaaS）结合 AI 反攻”。
+在阅读全文前，有几个重点数据需要先关注：
 
----
+- **付费用户比例较低**：全美近半数人使用过 AI，但每天使用的仅有 25%，真正为 [ChatGPT](../products/chatgpt.md)、[Gemini](../products/gemini.md) 或 [Claude](../products/claude.md) 个人订阅付费的消费者只有 4.5%。
+- **支出高度集中于重度用户**：前 1% 的重度付费用户月均支出达 903 美元（18 个月内增长 80%），贡献了近两成的总支出；而中位数付费者每月仅 25 美元，且只有 13% 的人会购买第二款 AI 工具。
+- **流量与实际收入显著脱节**：消费支出前 50 强中，有 29 家完全没有进入网页流量或移动端月活榜单。高客单价产品主要集中在桌面客户端、开发工具和直接嵌入即时通讯工具的智能体（Agent）。
+- **头部效应加剧**：本期仅 11 款新产品首次入榜，为历期最少。[Canva](../products/canva.md)、[Notion](../products/notion.md)、[Figma](../products/figma.md) 等成熟软件凭借已有工作流占据前列，同时进入网页、移动与支出三榜前列的产品全球仅 7 家。
 
-## 1. 方法论变化
-
-**前六期回顾**：
-仅用流量指标排名，即 Similarweb 月独立访问量（Web 榜前 50）、Sensor Tower 月活跃用户 MAU（移动榜前 50）。
-
-**第 7 期新规则**：
-1. **首次引入 YipitData 美国消费者信用卡/电子收据观测支出数据**，新增“消费支出 Top 50（Spend 50）”榜单。官方表示纯流量数据“increasingly conceals the real trends in consumer AI”。
-2. **新增维度的背景**：支出视角覆盖了流量盲区，包括桌面 App、开发工具、媒体生成 API 以及嵌入既有通信工具的 Agent。这类产品没有同等规模的网页访问量或 App 下载，但客单价较高。
-3. **支出数据揭示的事实**：
-   - 支出榜 Top 50 中，有 **29 家公司未进入 Web 或 Mobile 流量榜**。
-   - 流量排名与支出排名差异明显，取决于产品对重度付费用户的变现程度。
-   - **仅 7 家公司同时进入三榜**：[ChatGPT](../products/chatgpt.md)（唯一三榜第一）、[Claude](../products/claude.md)、[Suno](../products/suno.md)、[Perplexity](../products/perplexity.md)、[Photoroom](../products/photoroom.md)、[Canva](../products/canva.md)、[Notion](../products/notion.md)。
-   - 官方提示：支出榜基于美国消费者 panel 样本观测，不包含纯企业对公采购与美国境外直购，**不能等同于公司全球总营收**。
-4. **排除 NSFW 规则**：从本期起，**主要为成人/NSFW 场景设计的产品被排除**。官方估算被剔除的 NSFW 产品原本可占 Web 流量榜 20% 以上的席位（如第 6 期在榜的 JanitorAI、SpicyChat 等）。
+这份榜单涵盖的 100 多个消费级 AI 产品，后续我们会逐个进行分析拆解。
 
 ---
 
-## 2. 核心数据点
+# The Top 100 Gen AI Consumer Apps — 7th Edition
+### a16z 官方报告全文翻译
 
-以下数据来源于 a16z 官方报告与 YipitData 观测（统计截至 2026 年 8 月）：
+**作者**：Olivia Moore（a16z 合伙人）  
+**发布时间**：2026 年 10 月 5 日  
 
-| 数据指标 | 观测数值 | 来源与口径说明 |
-| --- | --- | --- |
-| ChatGPT Web 访问量 vs Gemini | 约 2 倍 | a16z 官方正文（Similarweb 2026-08） |
-| ChatGPT Web 访问量 vs Claude | 约 6 倍 | a16z 官方正文（Similarweb 2026-08） |
-| ChatGPT 移动 MAU vs Gemini / Claude | 约 2.5 倍 / 约 14 倍 | a16z 官方正文（Sensor Tower 2026-08） |
-| ChatGPT 移动端总 MAU | 10 亿+ | a16z LinkedIn 披露（2026-10-05，具体单帖链接待核实） |
-| ChatGPT 美国付费订阅数 | 约为 Gemini 或 Claude 各自的 3 倍 | a16z 官方正文（YipitData panel） |
-| Claude Web 全球排名 | 第 3 名（超 DeepSeek 与 Perplexity，月访问近 10 亿） | a16z 官方正文 + LinkedIn 披露 |
-| Claude vs Gemini 美国付费规模 | Claude 年内一度超越 Gemini；Google 迁移老订户后两者持平 | a16z 官方正文（YipitData panel） |
-| Claude $100+/月（Max 档）付费占比 | **7.3%**（Google 1.3%、ChatGPT 1.1%） | a16z 官方正文（YipitData panel） |
-| 美国家庭/消费者为 AI 付费比例 | **4.5%**（拥有一项三巨头个人订阅；一年前为 2.1%） | a16z 官方正文（YipitData e-receipt） |
-| 前 1% 付费者月均支出 | **$903**（18 个月增长 80%）；付费中位数 **$25**/月 | a16z 官方正文 |
-| 前 1% 付费者总支出贡献 | 19.5%（超过后 50% 付费者总和 16.6%）；前 10% 贡献约一半 | a16z 官方正文 |
-| 跨产品购买第二款 AI 工具比例 | **13%** | a16z 官方正文 |
-| 新入榜产品数量 | **11 个**（七期最少） | a16z 官方正文 |
-| ChatGPT 商业化进展 | 8 月广告年化收入达 **$10 亿**，周活跃用户 12 亿 | a16z 官方正文 |
-| 商业变现模式分布（Web Top 50 中 44 个 AI 原生产品） | 84% 订阅制、64% 用量/Credits、14% 广告、2% 交易平台分成 | a16z 官方正文 |
+追踪消费级 AI 三年，榜单正在变得越来越熟悉。这是我们第 7 期 Top 100 消费级 AI 应用报告，我们按月度流量对全球主流网页端和移动端 AI 产品进行排名（你可以翻阅我们此前的报告：第一期、第二期、第三期、第四期、第五期、第六期，了解这一生态的演变历程）。本期仅有 11 款产品首次登榜，是迄今七期榜单中新面孔最少的一期。
 
-**其他细节**：
-- **竞争重叠**：全美仅 8% 的 ChatGPT 订阅者同时订阅 Claude；ChatGPT 在全美除加州、蒙大拿、马萨诸塞 3 个州外均领先。
-- **Claude 波动**：2026 年 2 月底因 Pentagon 争议短暂登顶美国免费移动榜第 1；但在 7-8 月夏季日均会话下降、新增放缓且流失率抬升；ChatGPT 则随 7 月上线的 GPT-5.6（Sol/Terra/Luna）和 ChatGPT Work 重新提速。
-- **专有模型创意工具**：[Suno](../products/suno.md)（Web 第 19、支出第 7）、[ElevenLabs](../products/elevenlabs.md)（Web 第 25、支出第 10）在支出榜进入前十；[Midjourney](../products/midjourney.md)（支出第 11）、[HeyGen](../products/heygen.md)（美国，支出第 23）、[Kling AI](../products/kling-ai.md)（支出第 26）、[Topaz Labs](../products/topaz-labs.md)（支出第 27）围绕各自专有模型进入支出榜。
-- **交易型 Agent**：
-  - Instinct：40% 用户在 3 周内绑定个人信用卡，首购后月均消费达 $1,300；年化商品交易总额（GMV）突破 $10 亿，约一半来自旅游场景（创始人披露）。
-  - Meta Muse（9 月 9 日上线）：首周 DAU 达 25 万，首月下载破 500 万；上线两周内被 Amazon 封禁访问，但已与 Shopify、Instacart、OpenTable、Expedia、Ticketmaster、Plaid 达成官方集成。
+但单纯的流量数据，正在越来越遮蔽消费级 AI 的真实趋势。感谢 YipitData，我们首次引入了基于美国消费者银行卡实际观测支出的排名榜单。这为我们提供了观察市场的全新视角，涵盖了数十家在网页和移动端流量榜上完全缺席的厂商，例如桌面端应用，以及直接嵌入在现有即时通讯平台内部的智能体（Agent）。
+
+![a16z 第 7 期消费支出 Top 50 榜单](https://r2-img.kuhung.me/2026/10/6fc52b1bc4c823f5.webp)
+
+![a16z 第 7 期移动端 MAU Top 50 榜单](https://r2-img.kuhung.me/2026/10/553d7726796f0442.webp)
+
+![a16z 第 7 期网页访问量 Top 50 榜单](https://r2-img.kuhung.me/2026/10/d1b8ba3c680ba494.webp)
+
+这些全新支出数据揭示的最大结论是什么？对绝大多数人而言，消费级 AI 的使用面很广，但深度极浅。尽管目前近半数美国消费者表示自己使用过 AI，但仅有 25% 的人每天与之互动。截至 2026 年 8 月，仅有 4.5% 的美国消费者拥有 [ChatGPT](../products/chatgpt.md)、[Gemini](../products/gemini.md) 或 [Claude](../products/claude.md) 的有效个人付费订阅。在我们上周发布的《市场现状报告》（State of Markets）中，可以查阅更多关于 AI 大众渗透率的数据。
+
+然而，消费级 AI 的重度用户（Power Users）黏性极高，且变现潜力巨大。支出排名前 10% 的付费者，贡献了观测到的总消费支出的大约一半。这些高支出用户超配购买了编程、生产力和创意工具。
+
+在这批用户身上，消费级 AI 找到了自己的第一个真实市场：那些愿意为能够帮助自己构建、创造和完成工作的工具支付高额费用的群体。要想触达其他大众群体，很可能需要完全不同的产品形态。随着新一代个人助手的推出，我们现在看到了一丝曙光：与早期的 OpenClaw 不同，这些新助手无需开发者技能即可上手，并且对用户是免费的。
+
+随着产品能力的提升，消费级 AI 很可能还需要全新的商业模式，或者说，回归某种经典模式。几乎所有的 AI 收入都来自于直接的会员订阅或用量计费，这与以往通过广告或交易抽成等间接方式变现消费者的时代截然不同。这也成为了阻碍更深层次大众消费普及的限制因素。
+
+与往期一致，我们使用 Similarweb 统计的月访问量排名前 50 的网页端产品，使用 Sensor Tower 统计的月活跃用户（MAU）排名前 50 的移动端应用。生成式 AI 必须是产品体验的核心；AI 原生公司和融入 AI 的既有成熟产品均符合入选资格。
+
+从本期起，我们对准入规则做了一项调整：主要为 NSFW（成人内容）场景设计的产品将被排除在榜单之外。这绝不应被解读为对该类产品需求的下降，我们将它们视作一个独立的品类，而非与一般日常（SFW）产品混合排名。
 
 ---
 
-## 3. 中国及华人团队产品表现
+### 1. 三家大模型，三场不同游戏（Three LLMs, three different games）
 
-**官方正文与榜单确认的事实**：
-1. **[DeepSeek](../products/deepseek.md)**：官方正文确认 Claude 在 Web 访问量上“已超越 DeepSeek 和 Perplexity 等竞争对手”，DeepSeek 位列 Web 榜第 5 名、移动榜第 14 名。
-2. **[Kling AI](../products/kling-ai.md)（快手可灵）**：围绕专有视频模型进入美国消费者支出榜（支出榜第 26 名、Web 榜第 49 名）。此外，进入支出榜的中国产品还有 [EVOTO AI](../products/evoto-ai.md)（第 41 名）和 [MiniMax](../products/minimax.md)（第 42 名）。（注：[HeyGen](../products/heygen.md) 位列支出榜第 23 名，其总部位于美国，归为美国产品。）
-3. **[Manus](../products/manus.md)**：由中国团队蝴蝶效应（Butterfly Effect）创立，2025 年中将总部迁至新加坡（2025 年 12 月 Meta 曾宣布拟以超 20 亿美元收购，2026 年 4 月因中国监管部门安全与技术出口审查叫停而解除交易，恢复新加坡独立运营）。本期被官方报告点名为美国前 1% 重度付费者超配（overindex）的工具之一（与 [n8n](../products/n8n.md)、[fal.ai](../products/fal-ai.md)、[Nous Research](../products/nous-research.md) 并列），位列支出榜第 19 名、Web 榜第 38 名。
+消费级 AI 的头条新闻与我们在 2023 年 9 月的第一期报告中如出一辙：[ChatGPT](../products/chatgpt.md) 是开创者，并且依然是无可争议的领头羊。在 8 月份的网页访问量上，ChatGPT 领先 [Gemini](../products/gemini.md) 约 2 倍，对 [Claude](../products/claude.md) 的领先优势更达到 6 倍。这一差距在移动端更为悬殊：在月活跃用户数（MAU）上，ChatGPT 是 Gemini 的 2.5 倍，是 Claude 的 14 倍。
 
-**第三方参考与口径差异**：
-- 豆包与剪映在 a16z 第 7 期移动榜中的具体 MAU 数字仅出现在官方图表图片中，正文未提供文本披露（CapCut 7.36 亿 MAU 为第 6 期即 2026 年 1 月数据）。
-- 国内第三方口径（QuestMobile《2026 上半年 AI 应用市场发展洞察报告》，经 [BigGo 财经转引](https://finance.biggo.com/news/372811e2-28f1-49c7-9f53-fa56879cde3b)）：截至 2026 年 5 月，[豆包 (Doubao)](../products/doubao.md) 国内移动端 MAU 约 3.82 亿，[千问 (Qwen)](../products/qwen.md) 约 1.67 亿，[DeepSeek](../products/deepseek.md) 约 1.3 亿（该口径仅统计国内移动端，与 a16z 全球/海外口径不可直接对比）。
+我们的全新收入数据反映了类似的格局。根据 YipitData 的样本，ChatGPT 在美国的个人付费订阅用户数是 Claude 或 Gemini 各自的 3 倍。
 
----
+![美国个人付费订阅走势：ChatGPT 领先，Claude 追平 Gemini](https://r2-img.kuhung.me/2026/10/65a07b85194016a1.webp)
 
-## 4. a16z 的核心判断与启示
+这一格局中最显著的变化是 Claude 跃升为明确的第 3 名。Claude 在我们 2023 年 9 月的首期网页榜上甚至未能入榜，但如今其流量已超越 [DeepSeek](../products/deepseek.md) 和 [Perplexity](../products/perplexity.md) 等竞争对手。更具意义的是，Claude 在今年早些时候的美国个人付费订阅数一度超越了 Gemini。即使在 Google 将其旧版付费用户批量迁移至 AI 套餐（在非自然状态下推高了订阅数）之后，Gemini 和 Claude 目前在付费规模上依然并驾齐驱。
 
-1. **“重度付费经济（Power-user economy）”主导当前变现**：
-   近半数美国网民表示使用过 AI，但仅 25% 每天使用，仅 4.5% 付费。消费 AI 找到的第一个真实付费市场，是愿意为构建产品、内容创作和完成工作支付高溢价的人群。
-2. **头部固化与巨头分流**：
-   - 新进产品数创七期新低（11 个），既有软件（[Canva](../products/canva.md)、[Notion](../products/notion.md)、[Figma](../products/figma.md)、[Superhuman](../products/superhuman.md)）依靠成熟工作流与分发渠道占据前列。
-   - 三家大模型走向不同定位：Claude for work（专业工作人群）、Gemini for consumers（Google 生态分发）、ChatGPT for both（通用平台）。
-3. **入口转向个人助手与工作流**：
-   交互入口正从单一浏览器聊天框移向 iMessage、邮件、电话、浏览器插件和硬件设备。具备任务执行与交易结算能力的个人助手成为下一阶段竞争焦点。
-4. **创业公司的四个切入位置**：
-   - 官方正文总结的四个方向：**专有模型**（如 [Suno](../products/suno.md)、[Kling AI](../products/kling-ai.md)）、**多模型聚合体验**（如 [OpenRouter](../products/openrouter.md)）、**垂直人群深耕**（数据/隐私/工作流）、**新界面与硬件**（如 [Plaud](../products/plaud.md)）。
-   - 商业模式上，单一订阅制触及大众市场天花板，广告与 Agent 交易抽成（affiliate / take rate）是主要探索方向；播客中 Olivia Moore 与 Jordan Elman 指出社交、约会、购物、娱乐等传统互联网大品类在 AI 原生应用上仍接近空白。
+Claude 的这波增长得益于新产品的推出（1 月的 Cowork、4 月的 Claude Design）、新模型发布（6 月的 Fable 5）以及公众关注度的爆发。在 2 月底 Anthropic 与五角大楼的争议期间，Claude 首次登顶美国免费移动应用榜榜首。
 
----
+与 OpenAI 和 Google 不同，Anthropic 明确表态不会在 Claude 中投放广告，而是全力通过订阅变现。他们变现的手段极为激进：在 Claude 的个人付费用户中，有 7.3% 选择了最昂贵的个人套餐 Max（起售价为 $100/月）。相比之下，Google 和 ChatGPT 对应 $100/月套餐的付费用户占比分别仅为 1.3% 和 1.1%。
 
-## 5. 与第 6 期（2026 年 3 月）对比
+![Claude 激进转化高价订阅：7.3% 付费者选择 $100+/月 Max 档](https://r2-img.kuhung.me/2026/10/2e49521a2ad52cd5.webp)
 
-| 比较维度 | 第 6 期（2026-03，数据截至 2026-01） | 第 7 期（2026-10，数据截至 2026-08） |
-| --- | --- | --- |
-| **评选方法论** | 纯流量排名（Similarweb + Sensor Tower） | 流量排名 + **YipitData 美国消费者支出榜** |
-| **ChatGPT 领先幅度** | Web 访问量为 Gemini 的 2.7 倍 | Web 访问量为 Gemini 的约 2 倍（口径与月份不同） |
-| **ChatGPT 规模与变现** | 周活跃用户 9 亿 | 移动端 10 亿+ MAU；周活 12 亿；广告年化收入 $10 亿 |
-| **Claude 态势** | 付费订阅 YoY +200%，处于高速增长期 | Web 升至第 3 名；高价档占比 7.3%；夏季增速放缓、流失上升 |
-| **核心叙事** | 默认入口之争、地理分化（美/中/俄） | **Power-user economy**、谁在真正付费、既有软件反攻 |
-| **Agent 形态** | 终端命令行开发者工具（如 OpenClaw） | 面向消费与交易结算的个人助手（Instinct、Muse 等） |
-| **创意工具** | 独立通用图像生成器受挤压（Midjourney 跌至 Web #46） | Suno（支出 #7）、ElevenLabs（支出 #10）、Midjourney（支出 #11）、HeyGen（支出 #23）、Kling（支出 #26）进入支出榜 |
-| **既有软件** | 首次调整规则纳入既有工具（CapCut 7.36 亿 MAU） | Canva、Notion 进 Web 前 10，Figma 进前 15，Superhuman 居支出第 4 |
+到盛夏时节，风向开始转变。YipitData 的全球桌面端监测记录到 Claude 在 7 月和 8 月的日均会话数出现下滑，其美国电子收据样本也显示新增放缓、流失率抬升。与此同时，ChatGPT 凭借 7 月上线的 GPT-5.6 Sol、Terra 和 Luna 以及 ChatGPT Work 的发布重新加速。
+
+![ChatGPT 凭借新模型重夺新增订阅领先地位](https://r2-img.kuhung.me/2026/10/c1411576b8231964.webp)
+
+愈发明显的是，核心问题也许不再是“谁在赢”，而是“每家公司如何把握并执行自己的特定机会”。根据 YipitData 数据，全美仅有 8% 的 ChatGPT 订阅者同时订阅了 Claude。ChatGPT 的用户在性别和收入上的分布更加均衡，并且除了加利福尼亚州、蒙大拿州和马萨诸塞州外，在全美所有州都占据统治地位。
+
+![OpenAI 付费群体在性别与收入分布上更加均衡](https://r2-img.kuhung.me/2026/10/84838bd7e6ed4f69.webp)
+
+![OpenAI 在全美 47 个州领先于 Anthropic](https://r2-img.kuhung.me/2026/10/cf198563f4d73cd9.webp)
+
+用户构成的差异，在很大程度上源于产品定位走向了不同方向。在过去 6 个月里，Anthropic、Google 和 OpenAI 合计推出了 127 项新发布：
+- Anthropic 几乎完全聚焦于专业工作者（Claude Design、Code Review、Claude Science）。
+- Google 则在创意生成模型上领跑（Lyria 3 Pro、Gemini Omni）。
+- OpenAI 则同时兼顾消费级与企业级，既推出了针对企业的产品（ChatGPT Work、Sites、Dots），也推出了面向消费者的工具（Images 2.0、健康、个人财务、求职搜索）。
+
+![三大模型定位分化：Claude 偏工作，Gemini 偏大众消费，ChatGPT 兼顾](https://r2-img.kuhung.me/2026/10/254ddefbbee7af76.webp)
 
 ---
 
-## 局限与待核实
+### 2. AI 消费遵循幂律分布（AI spending follows a power law）
 
-1. **支出榜样本局限**：YipitData 数据来自美国消费者信用卡与电子收据 panel 观测，未覆盖美国境外直接订阅，也未计入企业对公采购；Google Gemini 因无法从 Google 整体消费者订阅中拆分收入而未纳入支出榜。
-2. **图表图片与正文披露差异**：豆包第 7 期移动端 MAU 约 3.15 亿来自 a16z 报告中的榜单图表图片，官方正文未单独披露文字数字；剪映（CapCut）7.36 亿 MAU 为第 6 期（2026 年 1 月）数据，第 7 期未披露更新值。
-3. **LinkedIn 单帖链接待核实**：ChatGPT 移动端 10 亿+ MAU 与 Claude 月访问近 10 亿摘自 2026-10-05 a16z 官方 LinkedIn 动态，原始笔记仅保留机构主页链接（`https://www.linkedin.com/company/a16z/`），具体单帖 URL 待核实（2026-10-23）。
-4. **国内与全球口径差异**：QuestMobile 国内移动端 MAU 数据与 a16z 全球/海外统计口径不同，不可直接横向加总或对比。
+我们首次根据 YipitData 的美国消费者银行卡支出数据引入了消费支出排名。这些数据仅针对美国，来源于统计样本而非全口径普查，因此不能直接等同于公司总营收。但它为我们提供了一个审视消费者如何为 AI 付费的全新维度，且结论清晰：高度集中。
+
+![三年过去，ChatGPT 依然稳守付费用户领先地位](https://r2-img.kuhung.me/2026/10/d4bdd482cc50cef9.webp)
+
+为 AI 付费的消费者基数正在增长，但依然狭窄。8 月份，在 YipitData 的美国电子收据样本中，符合条件的消费者里有 4.5% 拥有 ChatGPT、Gemini 或 Claude 至少一项有效的个人付费订阅，高于一年前的 2.1%。
+
+即便在这部分相对狭窄的付费消费群体中，支出依然遵循幂律法则。在购买了一款 AI 产品的用户中，仅有 13% 会为第二款 AI 工具付费。此外，支出排名前 1% 的付费者占据了全部观测到消费级 AI 支出的 19.5%，这一比例超过了后 50% 付费者合计贡献的比例（16.6%）。
+
+截至 2026 年 8 月，这前 1% 的人群每月在银行卡上为 AI 平均支出 $903（工作场景的使用金额可能更高）。而且这笔开支仍在增长，过去 18 个月内增长了 80%。与中位数付费者的差距极为悬殊：中位数用户的月均支出为 $25，且随着时间推移几乎没有扩张。
+
+![消费支出增长高度集中于顶层：前 1% 付费者支出增长 80%](https://r2-img.kuhung.me/2026/10/1a67ef5f85759e64.webp)
+
+这些重度付费者是谁？他们看起来不像普通大众消费者，更像专业消费者（Prosumers），即购买软件用于构建产品、创作内容和完成工作的个人。
+
+在整组样本中，前 1% 的付费者超配购买了用于自动化和产品构建的工具，例如 [n8n](../products/n8n.md)、[fal.ai](../products/fal-ai.md)、[Manus](../products/manus.md) 和 [Nous Research](../products/nous-research.md)（Hermes Agent）。这些重度付费者也明显偏好创意类工具，如 [Higgsfield](../products/higgsfield.md)、[Figma](../products/figma.md) 和 [HeyGen](../products/heygen.md)。
+
+![重度付费者超配的产品类别：自动化、编程与专业创意工具](https://r2-img.kuhung.me/2026/10/008bd425a35fefa6.webp)
+
+其结果是，消费级流量与消费级收入之间存在着巨大的脱节，这在我们的首期支出榜中得到了具体印证。支出前 50 的厂商中，有 29 家完全没有出现在我们的网页或移动流量榜单中。而对于那些确实上榜的产品，其流量排名与支出排名可能因其对重度用户商业化变现的激进程度不同而产生巨大差异。
+
+![消费支出排名与流量排名的显著脱节](https://r2-img.kuhung.me/2026/10/119a1f5b8c971383.webp)
+
+仅有 7 家公司同时登上了全部三张榜单，且其中一家（ChatGPT）在每张榜单上均位列榜首。这包括 3 家基础模型公司（ChatGPT、Claude 和 [Suno](../products/suno.md)）、2 家 AI 原生应用（Perplexity、[Photoroom](../products/photoroom.md)），以及 2 家融入 AI 的既有软件巨头（[Canva](../products/canva.md)、[Notion](../products/notion.md)）。
+
+![仅 7 款产品同时跻身网页、移动与支出三榜前列](https://r2-img.kuhung.me/2026/10/03e4b9061ff587de.webp)
+
+随着商业模式的拓展，我们预计付费用户群将会进一步扩大。尤其是个人智能体（Personal Agents），展示出了按交易而非按席位变现的潜力，无需按月订阅即可提供近乎无限制的使用体验。
 
 ---
 
-## Sources
+### 3. 争夺个人助手入口（The race to become your personal assistant）
 
-1. **Andreessen Horowitz 官方报告**：[The Top 100 Gen AI Consumer Apps — 7th Edition](https://a16z.com/100-gen-ai-apps-7/)，Olivia Moore，2026-10-05。
-2. **a16z 官方 LinkedIn 动态**：[a16z LinkedIn 主页](https://www.linkedin.com/company/a16z/)（2026-10-05 动态披露 ChatGPT 移动端 10 亿+ MAU 等数据，具体单帖 URL 待核实，2026-10-23）。
-3. **Cryptobriefing 报道**：[A16z's seventh Top 100 Consumer AI Apps list follows the money](https://cryptobriefing.com/a16z-top-100-consumer-ai-apps-seventh-edition/)，2026-10-06。
-4. **YOLOLAB 梳理**：[a16z 2026 消費者 AI 排名與支出數據解析](https://yololab.net/archives/a16z-top-100-consumer-ai-apps-2026-spending)，2026-10-06。
-5. **a16z Show 播客**：*The Top 100 Consumer AI Apps: Who's Actually Paying?*，Olivia Moore & Jordan Elman，2026-10-05（[GoLoudNow 音频](https://www.goloudnow.com/podcasts/the-a16z-show-381/the-top-100-genai-products-ranked-and-explained-518312)、[YouTube 视频](https://www.youtube.com/watch?v=aCvrzhwUxg0)、[BigGo 摘要报道](https://finance.biggo.com/news/3caf4d8845cc152e)）。
-6. **QuestMobile 数据（经 BigGo 财经转引）**：《2026 上半年 AI 应用市场发展洞察报告》，[BigGo 财经转引链接](https://finance.biggo.com/news/372811e2-28f1-49c7-9f53-fa56879cde3b)，2026-07-14。
+今年 3 月，我们曾写道：像 OpenClaw 这样的智能体虽然普通大众尚无法轻松使用，但这一天终会到来。6 个月后，多家初创团队的消费级或专业级 Agent 产品已报告拥有数十万用户，包括 Instinct、Tomo、Poke、Lindy 和 Town。与此同时，传统巨头也携自研智能体强势反击，包括 Meta 的 Muse、OpenAI 的 Dots 和 xAI 的 Grok Bot。
+
+![个人助手与 Agent 注册页面日访问量走势](https://r2-img.kuhung.me/2026/10/ef2b92692bb4e407.webp)
+
+这些智能体大多致力于无处不在，就像人类助手一样，你可以通过短信、邮件或打电话与它们沟通。当下的热门渠道是 iMessage，现象级智能体 Instinct 于 2026 年 8 月在此上线。DoorDash 等公司随后也推出了自己的 iMessage 智能体用于文本下单。而更多面向专业工作者或聚焦专业场景的消费级 Agent，通常也拥有独立的移动端或网页端应用，以提供更深入的交互体验。
+
+谁在使用这些智能体？用来做什么？正如我们的支出数据所表明的，这在很大程度上仍然是早期重度用户的游戏，这些重度用户与那些在 AI 上大手笔花钱的群体高度相似。根据运营 AssistantBenchmark 的 David Pawlan 针对 7 个早期用户社群（样本量 n = 1,502）的统计，关于智能体被讨论最频繁的任务领域是编程和技术自动化。
+
+![编程与技术自动化在 Agent 任务讨论中占据主导](https://r2-img.kuhung.me/2026/10/ed7cb47cbfbf5883.webp)
+
+Instinct 创始人 Noah Shinn 披露，40% 的用户会在三周内绑定个人信用卡，这些用户一旦产生首次购买，通过 Instinct 的月均消费达 $1,300。Shinn 称目前已有超过 10 亿美元的年化交易额流经 Instinct，其中一半可归因于旅游消费。
+
+随着智能体开始驱动实质性的流量与交易额，各大平台正在选边站队。Amazon 在不到两周的时间内封杀了 Meta 的 Muse，而 Shopify、Instacart、OpenTable、Expedia、Ticketmaster、Plaid 等平台则与智能体达成了官方集成合作。
+
+专业工作者把时间花在 Grok Bot、Dots（来自 OpenAI）和 Town 上。但截至 9 月下旬，大众消费端最引人注目的对决是 Instinct 对战 Muse。由前 Sierra 研究员 Noah Shinn 创立的 Instinct，据报道在 8 月底至 9 月初的邀请制阶段，仅用三周时间用户数就突破了 10 万。
+
+Meta 于 9 月 9 日推出了个人智能体 Muse，它可以在浏览器、桌面和移动应用以及 WhatsApp 中运行。据报道，Muse 在上线首周日活跃用户即达 25 万，不到一个月下载量突破 500 万，这一扩张速度超过了当年的 ChatGPT 和 Claude。Muse 目前仅在美国和加拿大可用。
+
+![Meta Muse 移动端每日下载量走势](https://r2-img.kuhung.me/2026/10/b70af4b9fbb1c09c.webp)
+
+但正如所有新消费品面临的挑战一样，首要的对手始终是用户的漠然。Muse 的早期势头如果与 Meta 推出 Threads 时的数据相比仍显逊色，后者在相同两个市场的前 22 天内便斩获了超过 1,500 万次下载。
+
+![Muse 与 Threads 早期发布下载速度对比](https://r2-img.kuhung.me/2026/10/1246c14f56e88703.webp)
+
+---
+
+### 4. 既有软件已至，初创公司的突围空间（The incumbents have arrived. Here’s where startups are still winning）
+
+在上一期榜单中，我们扩大了准入范围，将那些生成式 AI 已成为核心体验一部分的既有成熟产品纳入评选。
+
+这些产品如今在榜单上格外亮眼：Canva 和 Notion 在网页榜上位列前十，Figma 位列前 15。[Superhuman](../products/superhuman.md)（前身为 Grammarly）稳定居于网页榜上半区，并在消费支出榜上一举拿下第 4 名。仅 Google 一家就在网页榜独占 5 个席位：Gemini、NotebookLM、AI Studio、Labs 和 Antigravity。
+
+这类既有产品中的一部分可能仅仅起到了向大众普及 AI 的教育作用，促使他们流向 AI 原生产品寻求更深度的使用；但另一部分产品对新入局者而言，则构成了极其严肃的长期威胁。在那些能够持续吸引稳定注意力的初创公司中，有几个清晰的方向：
+
+1. **拥有差异化模型**：创意类产品是最好的例证。Suno 在网页流量榜排第 19、支出榜排第 7；[ElevenLabs](../products/elevenlabs.md) 分列第 25 和第 10。[Midjourney](../products/midjourney.md)、HeyGen、[Kling AI](../products/kling-ai.md) 和 [Topaz Labs](../products/topaz-labs.md) 也都进入了支出榜，这些产品全部围绕专有模型构建。即便利 Google 持续扩展 Nano Banana 和 Veo，且 ChatGPT 凭借 Images 2.0 取得了巨大成功，消费者依然在为专门的创意工具买单。对于特定的创意任务而言，独特的音效风格、视觉质感或专业训练数据集，往往比哪家实验室拥有最强通用模型更为关键。
+2. **提供多模型聚合体验**：[Cursor](../products/cursor.md) 支持来自多家实验室的模型；[OpenRouter](../products/openrouter.md) 为开发者提供对多家模型供应商的聚合访问。围绕客户的具体任务来调配模型，能够形成独特的产品优势。一家只销售自研模型的实验室，很难有动力把用户导向竞争对手。编程和生产力产品是这一逻辑的早期受益者：[Lovable](../products/lovable.md)、Cursor、[Base44](../products/base44.md) 和 [Replit](../products/replit.md) 全部进入了网页榜。Cursor 的名次从第 41 位提升至第 35 位，Base44 首次上榜位居第 46 位。
+3. **服务于具有特定需求的垂直人群**：[OpenEvidence](../products/openevidence.md) 以第 47 名进入网页榜，专门服务于执业医生；[Venice](../products/venice.md) 首次上榜排名第 43，专注于隐私保护型 AI。专业来源可靠性、数据隐私以及与客户日常工作流的契合度，其分量丝毫不亚于底层模型本身。内容合规政策同样创造了切入口：本期被排除的成人内容（NSFW）产品原本能够占到网页流量榜的 20% 以上。它们服务于主流通用助手不愿涉足的受众需求，OpenAI 曾在 2025 年告知用户“成人模式”正在开发中，但在今年早些时候无限期搁置了这一计划。
+4. **重构需要打破既有遗留界面的交互体验**：“遗留界面”既可以指 Google 文档或日历，也可以指 ChatGPT 或 Claude 空白的对话输入框。初创公司没有现存的用户使用惯性和既得收入包袱需要保护，这赋予了它们重塑产品工作方式的更大自由。一个典型的例子是硬件：大模型实验室迄今尚未（深度）涉足硬件领域。提供实体硬件并搭配订阅服务的录音硬件产品 [Plaud](../products/plaud.md)，在消费支出榜上一举冲到了第 16 名。这种先发优势能否持续仍有待观察。Meta 已经宣布通过智能眼镜中的 Muse 和一款 AI 电子宠物向硬件扩张，而 OpenAI 收购 io Products 的动作也暗示了其对硬件的野心。
+
+思考未来走向的最清晰路径，也许是去观察定义了前两个消费互联网时代的企业。许多最庞大的商业帝国都是围绕交易和网络效应建立起来的，而今天的消费级 AI 头部产品几乎都不具备真正的多人网络效应（Multi-player appeal）。AI 也很可能会创造出前所未有的消费者注意力与消费支出新类别。
+
+![消费级 AI 仍有巨大空白的品类：社交、约会、购物、娱乐](https://r2-img.kuhung.me/2026/10/455aaa9a0e6171dd.webp)
+
+---
+
+### 5. 多数消费级 AI 靠订阅变现，我们需要新商业模式（Most consumer AI products monetize via subscription. We need new business models）
+
+消费级 AI 已经找到了第一批受众，但正如我们的收入数据所表明的，深度的使用仍然受限。
+
+为什么？几乎所有高流量的消费级 AI 公司，都把最具价值的功能甚至稍微延长的使用时长锁在付费墙之后，要么通过月付订阅，要么通过单次购买积分点数。能够为 AI 付费的消费者固然支付了高额账单，但绝大多数普通用户依然无法或不愿为软件付费。在美国，即使是活跃的 AI 用户中，也只有大约一半的人每天使用。
+
+在我们网页榜前列的 44 款 AI 原生产品中，全部都已上线了某种变现机制。其中最受欢迎的是付费订阅，84% 的产品提供订阅；其次是用量计费或额外积分，渗透率为 64%（企业可以同时采用多种变现方式）。仅有 14% 的产品引入了广告，仅有 2% 通过交易或平台佣金赚取收入。
+
+![消费级 AI 商业变现模式分布：84% 订阅制，64% 用量积分](https://r2-img.kuhung.me/2026/10/107f8defe23c6ad1.webp)
+
+这与 AI 诞生前的消费级互联网正好相反。在那时，消费者本身是产品，而不是为产品付费的买单者。在 2025 年，广告收入占到 Meta 总营收的 97.6%，占到 Alphabet 总营收的 73.2%。Amazon 单独披露的订阅服务业务创造了 496 亿美元收入，但也仅占其总营收的 6.9%。
+
+订阅制对巨型消费级业务而言并非前所未见，但过去主要集中在流媒体与数字媒体领域，用户是为独家内容或免广告权益付费。在排名前 20 的全球消费级订阅产品中，有 65% 是媒体类业务（Netflix、Hotstar、Spotify 等）。经过三年半的增长，ChatGPT 已经跻身全球前 20，这体现了建立一个庞大的个人付费订阅基数是何等困难。
+
+![媒体构筑了订阅经济，ChatGPT 已跻身全球头部消费订阅行列](https://r2-img.kuhung.me/2026/10/810c819f31436468.webp)
+
+AI 公司之所以采用订阅或积分变现，有着充分的理由。销售广告或赚取交易分成通常需要极为庞大的用户规模底座。在过去单用户边际服务成本趋近于零时，消费级公司可以轻易地通过烧钱来沉淀网络密度。但在高昂的模型推理成本下，消费级 AI 无法承担放弃早期收入的代价。随着开源模型的持续激增，以及产品开发者能够将昂贵的前沿模型与廉价通用模型分流处理，这一成本压力将逐步得到缓解。
+
+随着更多消费级 AI 产品达到可观规模，其他商业模式也开始崭露头角。OpenAI 表示，ChatGPT 广告业务在 8 月份的年化收入已达 10 亿美元，其周活跃用户总量达到了 12 亿。全美约有 50% 至 60% 的执业医师在使用 OpenEvidence，该产品目前也部分通过广告变现。
+
+个人智能体可能开辟另一条路径，因为消费者现在正完全通过 AI 来完成具备归因能力的购买行为。标准的商业模式可能会类似于分销佣金（Affiliate fee）或交易抽成（Take rate）。Instinct 和 Muse 都公布了未来从交易中赚取佣金的计划，尽管目前两者都尚未正式执行；ChatGPT 目前也未对在产品内发起的购买交易进行收费。
+
+我们的消费支出数据证明了 AI 对于那些用来构建、创造和完成工作的人群具有多么重大的价值。下一个巨大的机会，是让它在更广阔的日常生活中变得同样有用。订阅制对其中的许多产品仍然会是自然的选择，而广告和交易分成机制，则将赋予创业者更多服务大众消费者的途径，也让普通消费者有机会真正触及 AI 的力量。
+
+---
+
+## 总结
+
+综合 a16z 本期报告的数据与分析，核心结论有以下几点：
+
+1. **真实付费群体高度集中于重度用户**。面向大众的通用个人订阅增长放缓，单人月均付费很高的高频代码、自动化和专业生产力工具，构成了当前真实的商业化支柱。
+2. **既有软件结合 AI 的反攻已成定局**。拥有成熟工作流和分发渠道的传统软件正在挤压纯外壳应用，新产品的机会主要存在于专有模型、多模型聚合体验以及专业垂直人群。
+3. **交互入口正从对话框移向个人智能体**。智能体正在尝试接管具体任务执行与支付闭环，未来的商业模式预计将从单一的席位订阅，逐步延伸至交易抽成与广告。
+
+这份榜单里涵盖的 100 多个消费级 AI 产品，后续我们会按业务场景与商业模式逐个进行拆解分析。
