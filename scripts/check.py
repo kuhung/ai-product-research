@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pre-publish checks: tracked paths, file types, product frontmatter, list links.
+"""Pre-publish checks: tracked paths, file types, product frontmatter, stub bodies, aliases, dates, list links.
 
 Does not scan file contents for sensitive text; still read the diff before publishing.
 """
@@ -37,28 +37,32 @@ def check_path(name):
     return None
 
 
-def frontmatter(text):
-    m = re.match(r"---\n(.*?)\n---\n", text, re.S)
+def parse_doc(text):
+    m = re.match(r"---\n(.*?)\n---\n?(.*)", text, re.S)
     if not m:
-        return None
+        return None, ""
     meta = {}
     for line in m.group(1).splitlines():
         if ":" in line:
             key, value = line.split(":", 1)
             meta[key.strip()] = value.strip()
-    return meta
+    body = re.sub(r"<!--.*?-->", "", m.group(2), flags=re.S).strip()
+    return meta, body
+
+
+def parse_list_field(raw):
+    return [s.strip().strip("\"'") for s in re.findall(r'"([^"]+)"|\'([^\']+)\'', raw or "") for s in s if s]
 
 
 def main():
-    errors = []
-    files = tracked()
-    for name in files:
+    errors, warnings = [], []
+    for name in tracked():
         reason = check_path(name)
         if reason:
             errors.append(f"{name}: {reason}")
 
     for f in sorted((ROOT / "products").glob("*.md")):
-        meta = frontmatter(f.read_text(encoding="utf-8"))
+        meta, body = parse_doc(f.read_text(encoding="utf-8"))
         if meta is None:
             errors.append(f"products/{f.name}: missing frontmatter")
             continue
@@ -67,14 +71,26 @@ def main():
             errors.append(f"products/{f.name}: missing {', '.join(missing)}")
         if meta.get("id") and meta["id"] != f.stem:
             errors.append(f"products/{f.name}: id '{meta['id']}' does not match filename")
-        if meta.get("status") and meta["status"] not in STATUSES:
+        status = meta.get("status")
+        if status and status not in STATUSES:
             errors.append(f"products/{f.name}: status must be one of {sorted(STATUSES)}")
+        if status == "stub" and len([ln for ln in body.splitlines() if ln.strip()]) > 1:
+            errors.append(f"products/{f.name}: stub must have empty or single-line body")
+        comp = re.sub(r"\s*[\(（].*?[\)）]", "", meta.get("company", "")).strip().lower()
+        for alias in parse_list_field(meta.get("aliases", "")):
+            if comp and alias.lower() == comp:
+                errors.append(f"products/{f.name}: alias '{alias}' duplicates company '{meta.get('company')}'")
+        fl = meta.get("first_launch", "")
+        if re.match(r"^\d{4}-\d{2}-01$", fl):
+            warnings.append(f"products/{f.name}: first_launch '{fl}' looks like a -MM-01/-01-01 placeholder")
 
     for f in sorted((ROOT / "lists").glob("*.md")):
         for target in re.findall(r"\]\((\.\./products/[^)#]+\.md)\)", f.read_text(encoding="utf-8")):
             if not (f.parent / target).resolve().exists():
                 errors.append(f"lists/{f.name}: missing profile {target}")
 
+    for w in warnings:
+        print(f"Warning: {w}", file=sys.stderr)
     if errors:
         print("Check failed:", file=sys.stderr)
         for e in errors:
