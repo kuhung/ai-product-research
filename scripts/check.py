@@ -89,6 +89,13 @@ def main():
             if not (f.parent / target).resolve().exists():
                 errors.append(f"lists/{f.name}: missing profile {target}")
 
+    for f in sorted((ROOT / "articles").glob("*.md")):
+        for target in re.findall(r"\]\(([^)#]+\.md)\)", f.read_text(encoding="utf-8")):
+            if target.startswith("http"):
+                continue
+            if not (f.parent / target).resolve().exists():
+                errors.append(f"articles/{f.name}: missing linked doc {target}")
+
     for w in warnings:
         print(f"Warning: {w}", file=sys.stderr)
     if errors:
